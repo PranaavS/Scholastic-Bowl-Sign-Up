@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entry List</title>
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .team-box {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+  }
+  .team-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .team-capacity {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .player-names {
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  .join-button {
+    background-color: #0095ff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="team-box">
+      <p class="team-name">TEAM 1</p>
+      <p class="team-capacity">({{capacities[0]}}/5)</p>
+      <p class="player-names">
+       {%for participant in data%}
+         {%if participant[2] == 1%}
+            {{participant[0] + " " + participant[1]}} <br>
+         {%endif%}
+        {%endfor%}
+      </p>
+      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 2</p>
+      <p class="team-capacity">({{capacities[1]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 2%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 3</p>
+      <p class="team-capacity">({{capacities[2]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 3%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 4</p>
+      <p class="team-capacity">({{capacities[3]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 4%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 5</p>
+      <p class="team-capacity">({{capacities[4]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 5%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 6</p>
+      <p class="team-capacity">({{capacities[5]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 6%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 7</p>
+      <p class="team-capacity">({{capacities[6]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 7%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+    <div class="team-box">
+      <p class="team-name">TEAM 8</p>
+      <p class="team-capacity">({{capacities[7]}}/5)</p>
+      <p class="player-names">
+        {%for participant in data%}
+          {%if participant[2] == 8%}
+             {{participant[0] + " " + participant[1]}} <br>
+          {%endif%}
+         {%endfor%}
+       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+    </div>
+  </div>
+</body>
+</html>
