@@ -69,7 +69,9 @@ def join():
 				return redirect("/full")
 		return redirect("/") 
 	else: 
-		return render_template('join.html') 
+		team = request.args.get("team")
+		print(team)
+		return render_template('join.html', team= int(team)) 
 
 @app.route('/full', methods=['GET']) 
 def full():

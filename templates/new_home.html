@@ -60,7 +60,7 @@
          {%endif%}
         {%endfor%}
       </p>
-      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=1';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 2</p>
@@ -72,8 +72,8 @@
           {%endif%}
          {%endfor%}
        </p>
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
-    </div>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=2';>JOIN</button>
+      </div>
     <div class="team-box">
       <p class="team-name">TEAM 3</p>
       <p class="team-capacity">({{capacities[2]}}/5)</p>
@@ -84,8 +84,8 @@
           {%endif%}
          {%endfor%}
        </p>
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
-    </div>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=3';>JOIN</button>
+      </div>
     <div class="team-box">
       <p class="team-name">TEAM 4</p>
       <p class="team-capacity">({{capacities[3]}}/5)</p>
@@ -96,8 +96,8 @@
           {%endif%}
          {%endfor%}
        </p>
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
-    </div>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=4';>JOIN</button>
+      </div>
     <div class="team-box">
       <p class="team-name">TEAM 5</p>
       <p class="team-capacity">({{capacities[4]}}/5)</p>
@@ -107,7 +107,8 @@
              {{participant[0] + " " + participant[1]}} <br>
           {%endif%}
          {%endfor%}
-       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=5';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 6</p>
@@ -118,7 +119,8 @@
              {{participant[0] + " " + participant[1]}} <br>
           {%endif%}
          {%endfor%}
-       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=6';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 7</p>
@@ -129,7 +131,8 @@
              {{participant[0] + " " + participant[1]}} <br>
           {%endif%}
          {%endfor%}
-       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=7';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 8</p>
@@ -140,7 +143,8 @@
              {{participant[0] + " " + participant[1]}} <br>
           {%endif%}
          {%endfor%}
-       </p>      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}';>JOIN</button>
+       </p>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8';>JOIN</button>
     </div>
   </div>
 </body>
