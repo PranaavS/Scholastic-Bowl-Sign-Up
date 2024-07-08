@@ -2,11 +2,38 @@
 <html> 
 	<head> 
 		<title>SchoBowl 2024</title> 
+
+		<style>
+			.container {
+			  display: flex;
+			  flex-wrap: wrap;
+			  justify-content: center;
+			  align-items: center;
+			  width: fit-content;
+			  margin: 0 auto;
+			  padding: 20px;
+			}
+			.heading {
+				font-weight: bold;
+				font-family: Helvetica, Arial, sans-serif;
+			}
+			.text {
+				font-family: Helvetica, Arial, sans-serif;
+			}
+			.return-button{
+				background-color: #0095ff;
+				color: white;
+				padding: 5px 10px;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+		</style>
 	</head> 
 	<body> 
 
-		<h1>ERROR: Full Team</h1> 	
-        <p>The team you tried to join is full. Please choose a different team.</p>
-        <button class="btn" type="button" onclick=window.location.href='{{ url_for("index") }}';>Back to home</button><br/>
+		<h1 class="heading">ERROR: Full Team</h1> 	
+        <p class="text">The team you tried to join is full. Please choose a different team. This submission was not recorded.</p>
+        <button class="return-button" type="button" onclick=window.location.href='{{ url_for("index") }}';>BACK TO HOME</button><br/>
 	</body> 
 </html> 

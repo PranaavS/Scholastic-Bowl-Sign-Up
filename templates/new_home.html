@@ -26,7 +26,7 @@
   .team-name {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-family: Helvetica, Arial, sans-serif;
   }
   .team-capacity {
@@ -46,13 +46,19 @@
     border-radius: 3px;
     cursor: pointer;
   }
+  .extra-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
   <div class="container">
     <div class="team-box">
       <p class="team-name">TEAM 1</p>
-      <p class="team-capacity">({{capacities[0]}}/5)</p>
+      <p class="team-capacity">{{capacities[0]}}/5 {% if capacities[0] >= 5%} (Full) {% endif %} </p>
       <p class="player-names">
        {%for participant in data%}
          {%if participant[2] == 1%}
@@ -64,7 +70,7 @@
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 2</p>
-      <p class="team-capacity">({{capacities[1]}}/5)</p>
+      <p class="team-capacity">{{capacities[1]}}/5 {% if capacities[1] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 2%}
@@ -76,7 +82,7 @@
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 3</p>
-      <p class="team-capacity">({{capacities[2]}}/5)</p>
+      <p class="team-capacity">{{capacities[2]}}/5 {% if capacities[2] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 3%}
@@ -88,7 +94,7 @@
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 4</p>
-      <p class="team-capacity">({{capacities[3]}}/5)</p>
+      <p class="team-capacity">{{capacities[3]}}/5 {% if capacities[3] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 4%}
@@ -100,7 +106,7 @@
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 5</p>
-      <p class="team-capacity">({{capacities[4]}}/5)</p>
+      <p class="team-capacity">{{capacities[4]}}/5 {% if capacities[4] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 5%}
@@ -112,7 +118,7 @@
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 6</p>
-      <p class="team-capacity">({{capacities[5]}}/5)</p>
+      <p class="team-capacity">{{capacities[5]}}/5 {% if capacities[5] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 6%}
@@ -124,7 +130,7 @@
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 7</p>
-      <p class="team-capacity">({{capacities[6]}}/5)</p>
+      <p class="team-capacity">{{capacities[6]}}/5 {% if capacities[6] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 7%}
@@ -136,7 +142,7 @@
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 8</p>
-      <p class="team-capacity">({{capacities[7]}}/5)</p>
+      <p class="team-capacity">{{capacities[7]}}/5 {% if capacities[7] >= 5%} (Full) {% endif %}</p>
       <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 8%}
@@ -147,5 +153,7 @@
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8';>JOIN</button>
     </div>
   </div>
+
+  <p class="extra-text">To remove an entry, please contact Pranaav Sureshkumar at 224 428 6837.</p>
 </body>
 </html>
