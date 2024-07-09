@@ -33,7 +33,7 @@ connect = sqlite3.connect('database.db')
 connect.execute('CREATE TABLE IF NOT EXISTS PARTICIPANTS (first_name TEXT, last_name TEXT, team INTEGER, email TEXT, phone TEXT)') 
 
 
-@app.route('/join', methods=['GET', 'POST']) 
+@app.route('/join', methods=['GET', 'POST'])
 def join(): 
 	if request.method == 'POST': 
 		first_name = request.form['first_name']

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/C6QJKHJ/favicon-32x32.png">
+    
     <title>Sign Up</title>
     <style>
       .container {
@@ -47,9 +49,16 @@
         border-radius: 3px;
         cursor: pointer;
       }
+      .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 20%;
+      }
     </style>
   </head>
   <body>
+    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/PTKDysr/Scho-Bowl-Logo-1.png" alt="Scho-Bowl-Logo-1" class="center"></a>  <div class="container">
     <div class="container">
       <form method="POST">
         <label for="first_name">First name:</label>
