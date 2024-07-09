@@ -65,6 +65,7 @@ def join():
 			if capacities_dict[f"Team {team}"] < 5:
 				cursor.execute("INSERT INTO PARTICIPANTS (first_name,last_name,team,email,phone) VALUES (?,?,?,?,?)", (first_name, last_name, team, email,phone)) 
 				users.commit()
+				return render_template("confirmation.html")
 			else:
 				return redirect("/full")
 		return redirect("/") 

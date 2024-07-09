@@ -41,14 +41,14 @@
   </head> 
   <body> 
 
-  <!--
+    <!--
 	<div style="text-align: center;">
     	<a href="{{ url_for('index') }}"><img src="https://i.ibb.co/PTKDysr/Scho-Bowl-Logo-1.png" alt="Scho-Bowl-Logo-1" width="20%"></a>
 	</div>
-  -->
+    -->
 
-	<h1 class="heading">ERROR: Full Team</h1>
-	<p class="text">The team you tried to join is full. Please choose a different team. This submission was not recorded.</p>
+	<h1 class="heading">You're all set.</h1>
+	<p class="text">Your registration is complete. You should be able to find your name on the <a href="{{ url_for('index') }}">entry list</a>. You may safely close this page. Good luck!</p>
 	<button class="return-button" type="button" onclick=window.location.href='{{ url_for("index") }}';>BACK TO HOME</button><br/>
   </body> 
 </html>
