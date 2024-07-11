@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
-import sqlite3 
+import sqlite3
+import hashlib # used for hashing passwords
 
 app = Flask(__name__) 
 
@@ -41,7 +42,7 @@ def join():
 		email = request.form['email'] 
 		phone = request.form['phone']
 		team = request.form['team']
-		hashed_pass = hash(request.form['pass'])
+		hashed_pass = hashlib.sha256(request.form['pass'].encode()).hexdigest()
 
 		with sqlite3.connect("database.db") as users: 
 			cursor = users.cursor() 
@@ -83,7 +84,7 @@ def full():
 def remove(): 
 	if request.method == 'POST': 
 		entry = request.form['entry'].split()
-		hashed_pass = hash(request.form['pass'])
+		hashed_pass = hashlib.sha256(request.form['pass'].encode()).hexdigest()
 
 		with sqlite3.connect("database.db") as users: 
 			cursor = users.cursor() 
@@ -104,12 +105,12 @@ def remove():
 		print(entry)
 
 		with sqlite3.connect("database.db") as users: 
-			cursor = users.cursor() 
+			cursor = users.cursor()
 			cursor.execute('SELECT * FROM PARTICIPANTS') 
 			entries = cursor.fetchall()
 			formatted_entries = sorted([[str(person[2]), person[0], person[1]] for person in entries])
 			print(formatted_entries)
-			return render_template('remove.html', user_entry=entry, entries=formatted_entries) 
+			return render_template('remove.html', user_entry=entry, entries=formatted_entries)
 
 if __name__ == '__main__':
 	app.run(debug=False) 

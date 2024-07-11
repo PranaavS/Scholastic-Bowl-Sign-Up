@@ -33,6 +33,7 @@
       input[type="text"],
       input[type="email"],
       input[type="number"],
+      input[type="password"],
       select {
         width: 100%;
         padding: 5px;
@@ -70,7 +71,7 @@
         <label for="phone">Phone:</label>
         <input type="number" id="phone" name="phone" placeholder="1112223333">
         <label for="pass">Create password:</label>
-        <input type="text" id="pass" name="pass" placeholder="You'll need this to remove an entry.">
+        <input type="password" id="pass" name="pass" placeholder="You'll need this to remove an entry.">
         <label for="team">Team: </label>
         <select name="team" id="team">
           {% for i in range(1, 9) %}
