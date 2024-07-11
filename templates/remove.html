@@ -68,7 +68,7 @@
             <option value='{{ person[0] + "  " + person[1] + " " + person[2] }}' {% if person == user_entry %}selected{% endif %}>Team {{ person[0] + " - " + person[1] + " " + person[2] }}</option>
           {% endfor %}
         </select>
-        <label for="pass">Password:</label>
+        <label for="pass">Password*:</label>
         <input type="password" id="pass" name="pass" placeholder="Enter the password you created when you joined.">
         <input type="submit" value="SUBMIT">
       </form>
