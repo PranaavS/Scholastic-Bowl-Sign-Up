@@ -22,7 +22,7 @@
     padding: 10px;
     margin: 10px;
     text-align: center;
-    width: 200px;
+    width: 300px;
   }
   .team-name {
     font-size: 20px;
@@ -38,6 +38,9 @@
   .player-names {
     font-size: 14px;
     font-family: Helvetica, Arial, sans-serif;
+    margin-right: 3px;
+    display: inline;
+    text-align: left;
   }
   .join-button {
     background-color: #0095ff;
@@ -46,6 +49,17 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
+  }
+  .remove-button {
+    background-color: #a50000;
+    color: white;
+    padding: 3px 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline;
+    margin-bottom: 5px;
+    font-size: 11px;
   }
   .extra-text {
     font-size: 16px;
@@ -67,101 +81,86 @@
     <div class="team-box">
       <p class="team-name">TEAM 1</p>
       <p class="team-capacity">{{capacities[0]}}/5 {% if capacities[0] >= 5%} (Full) {% endif %} </p>
-      <p class="player-names">
+      
        {%for participant in data%}
          {%if participant[2] == 1%}
-            {{participant[0] + " " + participant[1]}} <br>
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=1+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
          {%endif%}
         {%endfor%}
-      </p>
+
       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=1';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 2</p>
       <p class="team-capacity">{{capacities[1]}}/5 {% if capacities[1] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 2%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=2+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=2';>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 3</p>
       <p class="team-capacity">{{capacities[2]}}/5 {% if capacities[2] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 3%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=3+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=3';>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 4</p>
       <p class="team-capacity">{{capacities[3]}}/5 {% if capacities[3] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 4%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=4+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=4';>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 5</p>
       <p class="team-capacity">{{capacities[4]}}/5 {% if capacities[4] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 5%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=5+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=5';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 6</p>
       <p class="team-capacity">{{capacities[5]}}/5 {% if capacities[5] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 6%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=6+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=6';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 7</p>
       <p class="team-capacity">{{capacities[6]}}/5 {% if capacities[6] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 7%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=7+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=7';>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 8</p>
       <p class="team-capacity">{{capacities[7]}}/5 {% if capacities[7] >= 5%} (Full) {% endif %}</p>
-      <p class="player-names">
         {%for participant in data%}
           {%if participant[2] == 8%}
-             {{participant[0] + " " + participant[1]}} <br>
+            <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry=8+{{ participant[0] }}+{{ participant[1] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       </p>
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8';>JOIN</button>
     </div>
   </div>
 
-  <p class="extra-text">To remove an entry, please contact Pranaav Sureshkumar at 224 428 6837.</p>
 </body>
 </html>
