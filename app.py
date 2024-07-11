@@ -31,7 +31,7 @@ def index():
 
 
 connect = sqlite3.connect('database.db') 
-connect.execute('CREATE TABLE IF NOT EXISTS PARTICIPANTS (first_name TEXT, last_name TEXT, team INTEGER, email TEXT, phone TEXT, hashed_pass INTEGER)') 
+connect.execute('CREATE TABLE IF NOT EXISTS PARTICIPANTS (first_name TEXT, last_name TEXT, team INTEGER, email TEXT, phone TEXT, hashed_pass INTEGER, id INTEGER PRIMARY KEY)') 
 
 
 @app.route('/join', methods=['GET', 'POST'])
@@ -74,6 +74,8 @@ def join():
 	else: 
 		team = request.args.get("team")
 		print(team)
+		if team == None:
+			team = 1
 		return render_template('join.html', team= int(team)) 
 
 @app.route('/full', methods=['GET']) 
@@ -83,34 +85,35 @@ def full():
 @app.route('/remove', methods=['GET', 'POST'])
 def remove(): 
 	if request.method == 'POST': 
-		entry = request.form['entry'].split()
+
+		entry_id = request.form['entry']
 		hashed_pass = hashlib.sha256(request.form['pass'].encode()).hexdigest()
 
 		with sqlite3.connect("database.db") as users: 
 			cursor = users.cursor() 
-			cursor.execute('SELECT * FROM PARTICIPANTS') 
-			entries = cursor.fetchall()
-			formatted_entries = [[str(person[2]), person[0], person[1]] for person in entries]
-			index = formatted_entries.index(entry)
-			print(index)
-			print("Correct pass: " + str(entries[index][5]))
-			print("Attempted pass: " + str(hashed_pass))
-			if entries[index][5] == hashed_pass:
-				cursor.execute(f"DELETE FROM PARTICIPANTS WHERE first_name='{entry[1]}' AND last_name = '{entry[2]}' AND hashed_pass = '{hashed_pass}';")
+			cursor.execute(f'SELECT * FROM PARTICIPANTS WHERE id = {entry_id}') 
+			target_entry = cursor.fetchall()
+
+
+			if target_entry[0][5] == hashed_pass:
+				cursor.execute(f"DELETE FROM PARTICIPANTS WHERE id = '{entry_id}' AND hashed_pass = '{hashed_pass}';")
 				return render_template("leaving.html")
 			else:
 				return render_template("incorrect_password.html")
 	else: 
-		entry = request.args.get("entry").split()
-		print(entry)
+		entry_id = request.args.get("entry")
+		print(entry_id)
 
-		with sqlite3.connect("database.db") as users: 
+		with sqlite3.connect("database.db") as users:
 			cursor = users.cursor()
-			cursor.execute('SELECT * FROM PARTICIPANTS') 
+			cursor.execute('SELECT * FROM PARTICIPANTS')
 			entries = cursor.fetchall()
-			formatted_entries = sorted([[str(person[2]), person[0], person[1]] for person in entries])
-			print(formatted_entries)
-			return render_template('remove.html', user_entry=entry, entries=formatted_entries)
+			cursor.execute(f'SELECT * FROM PARTICIPANTS WHERE id = "{entry_id}"')
+			try:
+				entry=cursor.fetchall()[0]
+			except Exception as e:
+				return render_template('error.html', error_msg=e)
+			return render_template('remove.html', user_entry=entry, entries=entries)
 
 if __name__ == '__main__':
 	app.run(debug=False) 

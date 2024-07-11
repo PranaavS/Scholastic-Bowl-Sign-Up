@@ -65,7 +65,7 @@
         <label for="entry">Entry: </label>
         <select name="entry" id="entry">
           {% for person in entries %}
-            <option value='{{ person[0] + "  " + person[1] + " " + person[2] }}' {% if person == user_entry %}selected{% endif %}>Team {{ person[0] + " - " + person[1] + " " + person[2] }}</option>
+            <option value='{{ person[6] }}' {% if person == user_entry %}selected{% endif %}>Team {{ person[2] ~ " - " + person[0] + " " + person[1] }}</option>
           {% endfor %}
         </select>
         <label for="pass">Password*:</label>
