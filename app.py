@@ -76,7 +76,7 @@ def join():
 		print(team)
 		if team == None:
 			team = 1
-		return render_template('join.html', team= int(team)) 
+		return render_template('join.html', team=int(team)) 
 
 @app.route('/full', methods=['GET']) 
 def full():
@@ -114,6 +114,11 @@ def remove():
 			except Exception as e:
 				return render_template('error.html', error_msg=e)
 			return render_template('remove.html', user_entry=entry, entries=entries)
+		
+@app.route('/password', methods=['GET'])
+def password():
+	team = request.args.get("team")
+	return render_template('password_handling.html', team=int(team))
 
 if __name__ == '__main__':
 	app.run(debug=False) 

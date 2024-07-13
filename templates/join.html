@@ -51,20 +51,28 @@
         cursor: pointer;
       }
       .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 20%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+      }
+      .extra-text {
+        font-size: 16px;
+        margin-top: 10px; /* Adjust margin as needed */
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
       }
     </style>
   </head>
   <body>
-    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/PTKDysr/Scho-Bowl-Logo-1.png" alt="Scho-Bowl-Logo-1" class="center"></a>  <div class="container">
+    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/PTKDysr/Scho-Bowl-Logo-1.png" alt="Scho-Bowl-Logo-1" class="center"></a>  
     <div class="container">
       <form method="POST">
-        <label for="first_name">First name*:</label>
-        <input type="text" id="first_name" name="first_name" placeholder="John" required>
-        <label for="last_name">Last name*:</label>
+        <label for="first_name">Full first name*:</label>
+        <input type="text" id="first_name" name="first_name" placeholder="Jonathan" required>
+        <label for="last_name">Full last name*:</label>
         <input type="text" id="last_name" name="last_name" placeholder="Doe" required>
         <label for="email">Email*:</label>
         <input type="email" id="email" name="email" placeholder="example@somewhere.com" required>
@@ -81,5 +89,6 @@
         <input type="submit" value="SUBMIT">
       </form>
     </div>
+    <p class="extra-text">Your password is <b>never</b> stored directly. <a href='{{ url_for("password") }}?team={{ team }}'>Learn more.</a></p>
   </body>
 </html>
