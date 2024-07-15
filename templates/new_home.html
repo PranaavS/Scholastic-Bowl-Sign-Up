@@ -51,6 +51,10 @@
     cursor: pointer;
     margin-top: 30px;
   }
+  .join-button:disabled {
+    background-color: #575757;
+    cursor: not-allowed;
+  }
   .remove-button {
     background-color: #a50000;
     color: white;
@@ -72,12 +76,13 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 20vw;
+  margin-top: 1cm;
+  width: 22vw;
   }
 </style>
 </head>
 <body>
-    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/PTKDysr/Scho-Bowl-Logo-1.png" alt="Scho-Bowl-Logo-1" class="center"></a> 
+    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/4ffr1g5/Scho-Bowl-Logo-Cropped.png" alt="Scho-Bowl-Logo" class="center"></a> 
     <div class="container">
     <div class="team-box">
       <p class="team-name">TEAM 1</p>
@@ -89,7 +94,7 @@
          {%endif%}
         {%endfor%}
 
-      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=1';>JOIN</button>
+      <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=1'; {% if capacities[0] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 2</p>
@@ -99,7 +104,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=2';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=2'; {% if capacities[1] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 3</p>
@@ -109,7 +114,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=3';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=3'; {% if capacities[2] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 4</p>
@@ -119,7 +124,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=4';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=4'; {% if capacities[3] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 5</p>
@@ -129,7 +134,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=5';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=5'; {% if capacities[4] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 6</p>
@@ -139,7 +144,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=6';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=6'; {% if capacities[5] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 7</p>
@@ -149,7 +154,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=7';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=7'; {% if capacities[6] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 8</p>
@@ -159,7 +164,7 @@
           <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
           {%endif%}
          {%endfor%}
-       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8';>JOIN</button>
+       <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8'; {% if capacities[7] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
   </div>
 
