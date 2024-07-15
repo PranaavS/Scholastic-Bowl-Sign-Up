@@ -84,7 +84,7 @@
         <label for="team">Team: </label>
         <select name="team" id="team">
           {% for i in range(1, 9) %}
-            <option value="{{ i }}" {% if i == team %}selected{% endif %}>{{ i }}</option>
+            <option value="{{ i }}" {% if i == team %}selected{% endif %} {% if capacities[i - 1] >= 5 %}disabled{% endif %}>{{ i }}</option>
           {% endfor %}
         </select>
         <input type="submit" value="SUBMIT">

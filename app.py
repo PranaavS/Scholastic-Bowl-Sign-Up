@@ -71,14 +71,34 @@ def join():
 			else:
 				return redirect("/full")
 
-	else: 
+	else:
+		connect = sqlite3.connect('database.db') 
+		cursor = connect.cursor() 
+		cursor.execute('SELECT * FROM PARTICIPANTS') 
+
+		data = cursor.fetchall()
+		capacities_dict = {
+			"Team 1": 0,
+			"Team 2": 0,
+			"Team 3": 0,
+			"Team 4": 0,
+			"Team 5": 0,
+			"Team 6": 0,
+			"Team 7": 0,
+			"Team 8": 0,
+		}
+		for participant in data:
+			capacities_dict[f"Team {participant[2]}"] += 1
+		
+		capacities = [value for key, value in capacities_dict.items()]
+
 		team = request.args.get("team")
 		print(team)
 		if team == None:
 			team = 1
-		return render_template('join.html', team=int(team)) 
+		return render_template('join.html', team=int(team), capacities=capacities) 
 
-@app.route('/full', methods=['GET']) 
+@app.route('/full', methods=['GET'])
 def full():
 	return render_template("full.html")
 
