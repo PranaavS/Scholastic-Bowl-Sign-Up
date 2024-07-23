@@ -3,7 +3,7 @@
   <head>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/C6QJKHJ/favicon-32x32.png">
     
-    <title>Remove an Entry</title>
+    <title>Check In</title>
     <style>
       .container {
         display: flex;
@@ -66,7 +66,7 @@
         <label for="entry">Entry: </label>
         <select name="entry" id="entry">
           {% for person in entries %}
-            <option value='{{ person[6] }}' {% if person == user_entry %}selected{% endif %} {% if person[7] == 1 %}disabled{% endif %}>Team {{ person[2] ~ " - " + person[0] + " " + person[1] }}</option>
+            <option value='{{ person[6] }}' {% if person == user_entry %}selected{% endif %}>Team {{ person[2] ~ " - " + person[0] + " " + person[1] }}</option>
           {% endfor %}
         </select>
         <label for="pass">Password*:</label>

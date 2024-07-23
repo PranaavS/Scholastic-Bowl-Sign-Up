@@ -22,7 +22,7 @@
     padding: 10px;
     margin: 10px;
     text-align: center;
-    width: 300px;
+    width: 350px;
   }
   .team-name {
     font-size: 20px;
@@ -66,6 +66,28 @@
     margin-bottom: 5px;
     font-size: 11px;
   }
+  .check_in-button {
+    background-color: #007932;
+    color: white;
+    padding: 3px 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline;
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+  .checked_in-tag {
+    background-color: #007900;
+    color: white;
+    padding: 3px 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: default;
+    display: inline;
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
   .extra-text {
     font-size: 16px;
     margin-bottom: 10px;
@@ -89,8 +111,11 @@
       <p class="team-capacity">{{capacities[0]}}/5 {% if capacities[0] >= 5%} (Full) {% endif %} </p>
       
        {%for participant in data%}
-         {%if participant[2] == 1%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%if participant[2] == 1 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 1 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
          {%endif%}
         {%endfor%}
 
@@ -99,71 +124,92 @@
     <div class="team-box">
       <p class="team-name">TEAM 2</p>
       <p class="team-capacity">{{capacities[1]}}/5 {% if capacities[1] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 2%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 2 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 2 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=2'; {% if capacities[1] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 3</p>
       <p class="team-capacity">{{capacities[2]}}/5 {% if capacities[2] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 3%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 3 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 3 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=3'; {% if capacities[2] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 4</p>
       <p class="team-capacity">{{capacities[3]}}/5 {% if capacities[3] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 4%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 4 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 4 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=4'; {% if capacities[3] >= 5%} disabled {% endif %}>JOIN</button>
       </div>
     <div class="team-box">
       <p class="team-name">TEAM 5</p>
       <p class="team-capacity">{{capacities[4]}}/5 {% if capacities[4] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 5%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 5 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 5 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=5'; {% if capacities[4] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 6</p>
       <p class="team-capacity">{{capacities[5]}}/5 {% if capacities[5] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 6%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 6 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 6 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=6'; {% if capacities[5] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 7</p>
       <p class="team-capacity">{{capacities[6]}}/5 {% if capacities[6] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 7%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+       {%for participant in data%}
+         {%if participant[2] == 7 and participant[7] == 0%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+         {%endif%}
+         {%if participant[2] == 7 and participant[7] == 1%}
+          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+         {%endif%}
+        {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=7'; {% if capacities[6] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
     <div class="team-box">
       <p class="team-name">TEAM 8</p>
       <p class="team-capacity">{{capacities[7]}}/5 {% if capacities[7] >= 5%} (Full) {% endif %}</p>
-        {%for participant in data%}
-          {%if participant[2] == 8%}
-          <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
-          {%endif%}
-         {%endfor%}
+      {%for participant in data%}
+      {%if participant[2] == 8 and participant[7] == 0%}
+       <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="check_in-button" onclick=window.location.href='{{ url_for("checkin") }}?entry={{ participant[6] }}';>CHECK IN</button> <button class="remove-button" onclick=window.location.href='{{ url_for("remove") }}?entry={{ participant[6] }}';>REMOVE</button> <br>
+      {%endif%}
+      {%if participant[2] == 8 and participant[7] == 1%}
+       <p class="player-names"> {{participant[0] + " " + participant[1]}} </p> <button class="checked_in-tag" disabled>CHECKED IN</button> <br>
+      {%endif%}
+     {%endfor%}
        <button class="join-button" onclick=window.location.href='{{ url_for("join") }}?team=8'; {% if capacities[7] >= 5%} disabled {% endif %}>JOIN</button>
     </div>
   </div>
