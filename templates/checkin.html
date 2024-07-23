@@ -3,7 +3,7 @@
   <head>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/C6QJKHJ/favicon-32x32.png">
     
-    <title>Check In</title>
+    <title>Check in</title>
     <style>
       .container {
         display: flex;
@@ -13,6 +13,7 @@
         width: fit-content;
         margin: 0 auto;
         padding: 20px;
+        flex-direction: column; /* Add this line to stack children vertically */
       }
 
       form {
@@ -28,6 +29,13 @@
         margin-bottom: 5px;
         font-weight: bold;
 	    font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .heading {
+        text-align: center;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin-bottom: 0.2cm;
       }
 
       input[type="text"],
@@ -60,8 +68,9 @@
     </style>
   </head>
   <body>
-    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/4ffr1g5/Scho-Bowl-Logo-Cropped.png" alt="Scho-Bowl-Logo" class="center"></a>  <div class="container">
+    <a href="{{ url_for('index') }}"><img src="https://i.ibb.co/4ffr1g5/Scho-Bowl-Logo-Cropped.png" alt="Scho-Bowl-Logo" class="center"></a>
     <div class="container">
+      <h1 class="heading">Check in</h1>
       <form method="POST">
         <label for="entry">Entry: </label>
         <select name="entry" id="entry">

@@ -66,7 +66,7 @@ def join():
 			if capacities_dict[f"Team {team}"] < 5:
 				cursor.execute("INSERT INTO PARTICIPANTS (first_name,last_name,team,email,phone,hashed_pass,checked_in) VALUES (?,?,?,?,?,?,?)", (first_name, last_name, team, email,phone,hashed_pass,0)) 
 				users.commit()
-				return render_template("confirmation.html")
+				return render_template("register_confirmation.html")
 			else:
 				return redirect("/full")
 
@@ -150,7 +150,7 @@ def checkin():
 
 			if target_entry[0][5] == hashed_pass:
 				cursor.execute(f"UPDATE PARTICIPANTS SET checked_in = 1 WHERE id = '{entry_id}' AND hashed_pass = '{hashed_pass}';")
-				return render_template("confirmation.html")
+				return render_template("check_in_confirmation.html")
 			else:
 				return render_template("incorrect_password.html")
 	else: 

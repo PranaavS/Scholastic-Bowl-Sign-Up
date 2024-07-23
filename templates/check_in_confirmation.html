@@ -37,6 +37,28 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
       }
+
+      @media (max-width: 480px) {
+        .text{
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+
+      @media (max-width: 320px) {
+        .text{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+      }
+
+      @media (min-width:320px)  { .text{margin-left: 10px; margin-right: 10px; }}
+      @media (min-width:480px)  { .text{margin-left: 20px; margin-right: 20px; }}
+      @media (min-width:600px)  { .text{margin-left: 30px; margin-right: 30px; }}
+      @media (min-width:801px)  { .text{margin-left: 40px; margin-right: 40px; }}
+      @media (min-width:1025px) { .text{margin-left: 100px; margin-right: 100px; }}
+      @media (min-width:1281px) { .text{margin-left: 200px; margin-right: 200px; }}
+      
     </style>
   </head> 
   <body> 
@@ -48,7 +70,7 @@
     -->
 
 	<h1 class="heading">You're all set.</h1>
-	<p class="text">Your registration is complete. You should be able to find your name on the <a href="{{ url_for('index') }}">entry list</a>. You may safely close this page. Good luck!</p>
+	<p class="text">You're checked in. You'll no longer be able to withdraw from this tournament. You may safely close this page. Good luck!</p>
 	<button class="return-button" type="button" onclick=window.location.href='{{ url_for("index") }}';>BACK TO HOME</button><br/>
   </body> 
 </html>
