@@ -159,7 +159,7 @@ def checkin():
 
 		with sqlite3.connect("database.db") as users:
 			cursor = users.cursor()
-			cursor.execute('SELECT * FROM PARTICIPANTS')
+			cursor.execute('SELECT * FROM PARTICIPANTS WHERE checked_in = 0')
 			entries = cursor.fetchall()
 			cursor.execute(f'SELECT * FROM PARTICIPANTS WHERE id = "{entry_id}"')
 			try:
